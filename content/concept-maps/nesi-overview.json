@@ -1,0 +1,31 @@
+{
+  "id": "nesi-overview",
+  "title": "Nigeria Electricity System & Mini-Grid Role",
+  "prompt": "Map how electricity reaches a Nigerian community today, and where a mini-grid fits. There is no single correct answer — the goal is to build *your* model, naming the relationships in your own words.",
+  "concept_pool": [
+    { "id": "gencos", "label": "GenCos" },
+    { "id": "tcn", "label": "Transmission (TCN, 330kV / 132kV)" },
+    { "id": "discos", "label": "DisCos (33kV / 11kV / LV)" },
+    { "id": "mini_grid", "label": "Mini-grid" },
+    { "id": "captive", "label": "Captive generator" },
+    { "id": "shs", "label": "Solar home system" },
+    { "id": "community", "label": "Community / customer" },
+    { "id": "nerc", "label": "NERC" },
+    { "id": "serc", "label": "SERC" },
+    { "id": "rea", "label": "REA / DARES" },
+    { "id": "tariff", "label": "Tariff / willingness to pay" },
+    { "id": "nemsa", "label": "NEMSA" }
+  ],
+  "relatedness_hints": [
+    ["gencos", "tcn", "these are connected — you decide how"],
+    ["tcn", "discos", "these are connected — you decide how"],
+    ["discos", "community", "these are connected — you decide how"],
+    ["mini_grid", "community", "these are connected — you decide how"],
+    ["nerc", "mini_grid", "one regulates the other under some conditions — figure out which"],
+    ["serc", "mini_grid", "one regulates the other under some conditions — figure out which"],
+    ["mini_grid", "tariff", "these are connected — you decide how"]
+  ],
+  "allow_custom_nodes": true,
+  "min_nodes_to_submit": 5,
+  "min_edges_to_submit": 4
+}

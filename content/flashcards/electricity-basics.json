@@ -1,0 +1,16 @@
+{
+  "id": "electricity-basics",
+  "title": "Electricity & NESI basics",
+  "cards": [
+    { "id": "fc-eb-1", "q": "What does Voc mean?", "a": "Open-circuit voltage. The maximum voltage a PV module produces when no current is flowing." },
+    { "id": "fc-eb-2", "q": "What does Isc mean?", "a": "Short-circuit current. The maximum current when the module's terminals are shorted." },
+    { "id": "fc-eb-3", "q": "What is PSH?", "a": "Peak Sun Hours — the equivalent number of hours per day at 1000 W/m² that delivers the day's total irradiation." },
+    { "id": "fc-eb-4", "q": "What does NEMSA inspect?", "a": "Electrical installations, meters, and instruments for technical compliance in Nigeria." },
+    { "id": "fc-eb-5", "q": "What is SONCAP?", "a": "Standards Organisation of Nigeria's Conformity Assessment Programme — pre-shipment conformity for regulated imports." },
+    { "id": "fc-eb-6", "q": "What is MANCAP?", "a": "Mandatory Conformity Assessment Programme for locally manufactured products before market distribution." },
+    { "id": "fc-eb-7", "q": "What's the difference between MPPT and PWM?", "a": "MPPT charge controllers track the maximum power point and are far more efficient at mini-grid scale; PWM is simpler but loses energy whenever the module's MPP voltage differs from the battery voltage." },
+    { "id": "fc-eb-8", "q": "What does an isolated mini-grid mean under the 2026 regulations?", "a": "A mini-grid not interconnected with a DisCo network, up to 5 MW per site." },
+    { "id": "fc-eb-9", "q": "What is a Tripartite Agreement?", "a": "The contract between the developer, the distribution licensee, and the connected community for an interconnected mini-grid." },
+    { "id": "fc-eb-10", "q": "What are the typical Nigerian transmission voltages?", "a": "330 kV for the long-distance backbone and 132 kV for regional transfer." }
+  ]
+}

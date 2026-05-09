@@ -1,0 +1,47 @@
+---
+id: lesson-1-02
+title: Where a mini-grid fits in the system
+module: 01-nigeria-electricity
+difficulty: beginner
+pacer_type: analogous
+nigerian_context: true
+learning_objective: Compare a mini-grid against its alternatives — and notice where the easy comparisons break down.
+estimated_minutes: 15
+xp: 20
+prerequisites: [lesson-1-01]
+assessment_type: practice
+mastery_threshold: 80
+---
+
+A mini-grid is *like* a tiny utility. The analogy is useful — and incomplete. Use the analogy
+to get oriented; notice where it leaks before you trust it.
+
+<CritiquePrompt
+  lessonId="lesson-1-02"
+  question="A community is debating between (a) a shared diesel genset, (b) one solar home system per household, or (c) a mini-grid. There is no single correct answer — pick the one you'd defend, then read the trade-off."
+  options={[
+    {
+      label: "Shared diesel genset",
+      tradeoff: "Cheap CAPEX, but every kWh is held hostage to fuel price and supply. O&M and noise are constant. Carbon and air-quality cost is borne by the community.",
+      betterFor: "Very short-term load (a single event), or a single high-value user willing to bear fuel volatility."
+    },
+    {
+      label: "One solar home system per household",
+      tradeoff: "Each household is on its own — fine for lighting and phones, weak for productive loads (welding, cold storage, milling). No shared infrastructure means no shared cost reduction as the community grows.",
+      betterFor: "Very dispersed settlements where building a distribution network would cost more than the load justifies."
+    },
+    {
+      label: "Mini-grid",
+      tradeoff: "Higher CAPEX upfront, real distribution network and meters to maintain, must operate as a small business with tariffs, billing, and customer service. In return: utility-grade service, lower per-kWh cost as load grows, and capacity to support productive use.",
+      betterFor: "Communities with a clustered settlement, mixed productive + domestic load, and willingness to pay for reliable service."
+    }
+  ]}
+/>
+
+## Where the "tiny utility" analogy leaks
+
+- A national utility cross-subsidises rural service with urban revenues. A mini-grid can't.
+- A national utility can absorb a single bad year. A mini-grid can collapse if collections drop for two months.
+- A national utility plans on decades. A mini-grid developer must show payback in a few years to be financeable.
+
+These differences are why **community engagement, tariff design, and O&M discipline** matter more in mini-grids than in any other part of the power sector.

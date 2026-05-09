@@ -1,0 +1,38 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Which statement best captures what makes a mini-grid different from a solar home system?",
+    "options": [
+      "It uses bigger panels.",
+      "It serves a whole community through a shared local distribution network.",
+      "It is always connected to the national grid.",
+      "It only runs at night."
+    ],
+    "answerIndex": 1,
+    "explanation": "The defining feature is the local distribution network and multi-customer service — not just panel size."
+  },
+  {
+    "id": "q2",
+    "prompt": "An 'interconnected' mini-grid in Nigeria is one that…",
+    "options": [
+      "is connected to another mini-grid only.",
+      "exchanges power with the DisCo's distribution network under an agreement.",
+      "uses both solar and diesel.",
+      "has more than 100 customers."
+    ],
+    "answerIndex": 1,
+    "explanation": "Interconnection refers specifically to a relationship with the licensed distribution network."
+  },
+  {
+    "id": "q3",
+    "prompt": "Why is operating a mini-grid harder than running a single diesel genset for a business?",
+    "options": [
+      "Solar panels are fragile.",
+      "You have to plan for many customers with different load patterns and run a small utility.",
+      "Diesel is always cheaper.",
+      "Mini-grids cannot be metered."
+    ],
+    "answerIndex": 1,
+    "explanation": "Multi-customer load management, billing, and O&M make it a utility business, not a generator-on-a-pad."
+  }
+]

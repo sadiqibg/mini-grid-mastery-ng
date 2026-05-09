@@ -1,0 +1,42 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Which voltage levels are typical for transmission in Nigeria?",
+    "options": ["11 kV and 33 kV", "230 V and 415 V", "330 kV and 132 kV", "1 kV and 5 kV"],
+    "answerIndex": 2
+  },
+  {
+    "id": "q2",
+    "prompt": "Which body inspects electrical installations and meters for compliance?",
+    "options": ["NERC", "REA", "NEMSA", "SON"],
+    "answerIndex": 2
+  },
+  {
+    "id": "q3",
+    "prompt": "Under the 2026 framework, an isolated mini-grid can be up to what capacity per site?",
+    "options": ["100 kW", "1 MW", "5 MW", "10 MW"],
+    "answerIndex": 2
+  },
+  {
+    "id": "q4",
+    "prompt": "A SERC has primary authority for…",
+    "options": [
+      "all federal grid matters.",
+      "intrastate electricity systems where it is operational.",
+      "imports of electrical equipment.",
+      "engineering qualifications."
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q5",
+    "prompt": "An 'underserved' community in NESI is best described as one that…",
+    "options": [
+      "has never been connected.",
+      "is connected on paper but receives too little supply to be useful.",
+      "has refused to be metered.",
+      "uses only solar home systems."
+    ],
+    "answerIndex": 1
+  }
+]

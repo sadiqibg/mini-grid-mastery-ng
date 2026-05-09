@@ -1,0 +1,16 @@
+[
+  {
+    "regulation_name": "Mini-Grid Regulations 2026",
+    "authority": "NERC",
+    "effective_year": 2026,
+    "affected_lessons": ["lesson-1-01"],
+    "key_changes": [
+      "Isolated mini-grids up to 5MW per site",
+      "Interconnected mini-grids up to 10MW per site",
+      "Registration up to 100kW",
+      "Tripartite Agreement required for interconnected mini-grids",
+      "30-business-day NERC application clock; 15-business-day DisCo silence rule"
+    ],
+    "source": "NERC official publication"
+  }
+]
