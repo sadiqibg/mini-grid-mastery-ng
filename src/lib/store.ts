@@ -101,11 +101,10 @@ export const useStore = create<State>((set, get) => ({
   init: async () => {
     if (typeof window === "undefined") return;
     let identity = await localDb.getIdentity();
-    let isNew = false;
+    const isNew = !identity;
     if (!identity) {
       identity = newLearnerIdentity();
       await localDb.setIdentity(identity);
-      isNew = true;
     }
     const [meta, progress, xpEvents, badges, flashcards, conceptMaps, labArtifacts, capstone] = await Promise.all([
       localDb.getMeta(),
@@ -130,7 +129,9 @@ export const useStore = create<State>((set, get) => ({
       capstone,
       showRecoveryModal: isNew,
     });
-    if (isNew) scheduleSync();
+    // Don't sync the freshly-minted identity to Supabase yet — wait for the learner
+    // to take a real action (complete a lesson, save a lab, etc). Otherwise every
+    // incognito tab and bot crawl would create an orphan `learners` row.
   },
 
   resetAll: async () => {
@@ -320,9 +321,11 @@ export const useStore = create<State>((set, get) => ({
   completedModules: () => {
     const completed = new Set<string>();
     for (const slug of MODULES_IN_ORDER) {
-      // Module is "completed" when it has any lessons and they're all completed/mastered.
-      // For modules without authored lessons yet, leave incomplete.
-      const lessons = Object.values(get().progress).filter((p) => p.lessonId.startsWith(`lesson-${slug.split("-")[0]}-`));
+      // Lesson IDs use unpadded module numbers: module "00-onboarding" → "lesson-0-01".
+      // Strip the leading zero so the prefix actually matches.
+      const moduleNumber = Number(slug.split("-")[0]);
+      const prefix = `lesson-${moduleNumber}-`;
+      const lessons = Object.values(get().progress).filter((p) => p.lessonId.startsWith(prefix));
       if (lessons.length > 0 && lessons.every((p) => p.status === "completed" || p.status === "mastered")) {
         completed.add(slug);
       }

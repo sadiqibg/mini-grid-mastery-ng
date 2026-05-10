@@ -84,30 +84,22 @@ create table if not exists capstone_progress (
   updated_at timestamptz default now()
 );
 
--- Public leaderboard view (only opt-in learners)
-create or replace view leaderboard_v as
-select
-  l.id as learner_id,
-  l.display_name,
-  coalesce(sum(x.xp), 0) as total_xp
-from learners l
-left join xp_events x on x.learner_id = l.id
-where l.leaderboard_opt_in = true
-group by l.id, l.display_name
-order by total_xp desc
-limit 100;
+-- (leaderboard_v is created at the bottom, after the policies that gate it.)
 
 -- ============================================================
 -- Row-Level Security
--- For MVP: anon role can read/write its own rows by sending the
--- learner_id in a request header. The client uses the Supabase
--- anon key only. To restrict to "own rows", we use a policy that
--- compares learner_id against the current_setting('request.headers').
 --
--- NOTE: For stricter isolation in production, swap to JWT-based
--- auth with custom claims and `auth.uid()`. This MVP scheme is
--- "soft RLS" — sufficient because there is no PII, the recovery
--- code is the credential, and learner_ids are random UUIDs.
+-- The recovery_code on `learners` is the auth credential. It MUST NOT
+-- be readable by anon. So:
+--   • SELECT on `learners` is denied for anon.
+--   • Restore goes through the SECURITY DEFINER RPC `restore_by_code(code)`
+--     which returns the learner row only when the code matches.
+--   • INSERT/UPDATE on `learners` stay open so the client can create and
+--     update its own row (it knows its own learner_id and recovery_code).
+--   • Child tables (lesson_progress, xp_events, etc.) keep permissive
+--     policies. They are protected by obscurity: child rows are scoped by
+--     a 122-bit random `learner_id` UUID, which is computationally
+--     infeasible to guess. Hardening to JWT-scoped RLS is a future task.
 -- ============================================================
 
 alter table learners enable row level security;
@@ -119,15 +111,20 @@ alter table flashcard_state enable row level security;
 alter table concept_maps enable row level security;
 alter table capstone_progress enable row level security;
 
--- Permissive policies: anon can insert/update its rows. Read of `learners`
--- is restricted to recovery_code lookup (you'll create a function for this
--- in production). For MVP simplicity we allow anon select on learners by
--- recovery_code via a security-definer RPC; add when hardening.
-
+-- learners: deny direct SELECT; allow INSERT/UPDATE.
 drop policy if exists "anon all on learners" on learners;
-create policy "anon all on learners" on learners
-  for all using (true) with check (true);
+drop policy if exists "deny select on learners" on learners;
+drop policy if exists "anon insert learners" on learners;
+drop policy if exists "anon update learners" on learners;
 
+create policy "deny select on learners" on learners
+  for select using (false);
+create policy "anon insert learners" on learners
+  for insert with check (true);
+create policy "anon update learners" on learners
+  for update using (true) with check (true);
+
+-- Child tables: permissive (UUID-scoped by client).
 drop policy if exists "anon all on lesson_progress" on lesson_progress;
 create policy "anon all on lesson_progress" on lesson_progress
   for all using (true) with check (true);
@@ -156,6 +153,52 @@ drop policy if exists "anon all on capstone_progress" on capstone_progress;
 create policy "anon all on capstone_progress" on capstone_progress
   for all using (true) with check (true);
 
--- TODO before production: tighten policies so a learner can only read/write
--- rows where learner_id matches a verified header. For MVP / demo this
--- permissive policy + random UUIDs + recovery-code-as-credential is acceptable.
+-- ============================================================
+-- restore_by_code: SECURITY DEFINER lookup of a learner row by
+-- recovery_code. Bypasses the deny-select policy on `learners`
+-- because it runs with the function owner's privileges. The
+-- function returns at most one row, so it cannot enumerate codes.
+-- ============================================================
+
+create or replace function restore_by_code(code text)
+returns table (
+  id uuid,
+  recovery_code text,
+  display_name text,
+  role text,
+  community_scenario text,
+  leaderboard_opt_in boolean,
+  created_at timestamptz
+)
+language sql
+security definer
+set search_path = public
+stable
+as $$
+  select id, recovery_code, display_name, role, community_scenario, leaderboard_opt_in, created_at
+  from learners
+  where recovery_code = lower(trim(code))
+  limit 1;
+$$;
+
+-- Allow anon (and authenticated) to call it.
+grant execute on function restore_by_code(text) to anon, authenticated;
+
+-- Replace the leaderboard view so it has no SELECT-on-learners dependency at query time.
+-- (Views inherit the caller's permissions in Postgres unless declared SECURITY DEFINER.
+-- We make this view security_invoker=false so anon can read it via the join even though
+-- it touches `learners`.)
+create or replace view leaderboard_v
+with (security_invoker = false) as
+select
+  l.id as learner_id,
+  l.display_name,
+  coalesce(sum(x.xp), 0) as total_xp
+from learners l
+left join xp_events x on x.learner_id = l.id
+where l.leaderboard_opt_in = true
+group by l.id, l.display_name
+order by total_xp desc
+limit 100;
+
+grant select on leaderboard_v to anon, authenticated;

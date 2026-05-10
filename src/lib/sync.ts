@@ -128,14 +128,19 @@ async function runSync() {
 
 // Restore a learner's full snapshot from Supabase using their recovery code.
 // Returns the hydrated identity if found, or null otherwise.
+//
+// Uses the SECURITY DEFINER RPC `restore_by_code` instead of a direct SELECT,
+// because the `learners` table denies SELECT to anon — the recovery_code column
+// is the auth credential and must not be enumerable.
 export async function restoreFromRecoveryCode(code: string): Promise<LearnerIdentity | null> {
   if (!supabase) return null;
   const trimmed = code.trim().toLowerCase();
-  const { data: learner } = await supabase
-    .from("learners")
-    .select("id, recovery_code, display_name, role, community_scenario, leaderboard_opt_in, created_at")
-    .eq("recovery_code", trimmed)
-    .maybeSingle();
+  const { data, error } = await supabase.rpc("restore_by_code", { code: trimmed });
+  if (error) {
+    console.warn("[restore] rpc failed:", error);
+    return null;
+  }
+  const learner = Array.isArray(data) ? data[0] : data;
   if (!learner) return null;
 
   const lid = learner.id as string;
