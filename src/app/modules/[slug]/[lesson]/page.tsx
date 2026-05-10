@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import { listAllModules, readLesson, readQuiz } from "@/lib/content";
 import { mdxComponents } from "@/components/MdxComponents";
 import LessonClient from "./LessonClient";
@@ -36,7 +37,11 @@ export default function LessonPage({ params }: { params: { slug: string; lesson:
       </div>
 
       <div className="prose prose-ink max-w-none">
-        <MDXRemote source={lesson.body} components={mdxComponents} />
+        <MDXRemote
+          source={lesson.body}
+          components={mdxComponents}
+          options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+        />
       </div>
 
       {quiz && quiz.length > 0 && (
