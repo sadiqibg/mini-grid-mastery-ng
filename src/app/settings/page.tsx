@@ -73,6 +73,41 @@ export default function Settings() {
         </label>
       </section>
 
+      <section className="card">
+        <h2 className="font-semibold">Learner role & community scenario</h2>
+        <p className="mt-1 text-sm text-ink-500">Affects how lessons frame examples and what your capstone defaults to.</p>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          <label className="grid gap-1 text-xs uppercase text-ink-500">
+            Role
+            <select
+              className="rounded border border-ink-300 p-2 text-sm"
+              value={meta.role ?? ""}
+              onChange={(e) => void setMeta({ role: (e.target.value || undefined) as any })}
+            >
+              <option value="">— not set —</option>
+              <option value="beginner">Beginner Learner</option>
+              <option value="developer">Project Developer</option>
+              <option value="technical">Technical Trainee</option>
+              <option value="finance">Finance / Regulation</option>
+            </select>
+          </label>
+          <label className="grid gap-1 text-xs uppercase text-ink-500">
+            Community scenario
+            <select
+              className="rounded border border-ink-300 p-2 text-sm"
+              value={meta.communityScenario ?? ""}
+              onChange={(e) => void setMeta({ communityScenario: e.target.value || undefined })}
+            >
+              <option value="">— not set —</option>
+              <option value="remote-agrarian">Remote agrarian community</option>
+              <option value="diesel-retrofit">Peri-urban diesel retrofit</option>
+              <option value="riverine">Riverine community</option>
+              <option value="interconnected">Interconnected DisCo feeder</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
       <section className="card border-red-500/40">
         <h2 className="font-semibold text-red-700">Reset progress</h2>
         <p className="mt-1 text-sm text-ink-500">

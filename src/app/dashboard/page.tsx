@@ -65,6 +65,16 @@ export default function Dashboard() {
         </div>
       )}
 
+      {meta.role && !meta.communityScenario && (
+        <div className="card border-brand-500/40 bg-brand-50">
+          <h3 className="font-semibold">Pick a Nigerian community scenario</h3>
+          <p className="mt-1 text-sm text-ink-700">
+            Lessons and labs reference "your community" — pick the case that will shape your capstone. You can switch later in Settings.
+          </p>
+          <ScenarioPicker />
+        </div>
+      )}
+
       <section>
         <h2 className="text-lg font-semibold">Modules</h2>
         <ul className="mt-3 grid gap-3 sm:grid-cols-2">
@@ -116,6 +126,32 @@ export default function Dashboard() {
         </p>
       )}
     </div>
+  );
+}
+
+const SCENARIOS: Array<{ id: string; label: string; blurb: string }> = [
+  { id: "remote-agrarian", label: "Remote agrarian community", blurb: "Northern savannah, households + grain milling + irrigation. Seasonal demand." },
+  { id: "diesel-retrofit", label: "Peri-urban diesel retrofit", blurb: "Market cluster, shops + cold storage + welders. Replacing a noisy genset." },
+  { id: "riverine", label: "Riverine community", blurb: "Niger Delta / riverine belt. Cold storage for fish, access logistics, flood risk." },
+  { id: "interconnected", label: "Interconnected DisCo feeder", blurb: "Underserved Band C community. Mixed loads. Tripartite Agreement on the table." },
+];
+
+function ScenarioPicker() {
+  const setMeta = useStore((s) => s.setMeta);
+  return (
+    <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+      {SCENARIOS.map((s) => (
+        <li key={s.id}>
+          <button
+            className="w-full rounded-lg border border-ink-300/40 bg-white p-3 text-left hover:border-brand-500"
+            onClick={() => void setMeta({ communityScenario: s.id })}
+          >
+            <p className="font-semibold">{s.label}</p>
+            <p className="mt-1 text-xs text-ink-500">{s.blurb}</p>
+          </button>
+        </li>
+      ))}
+    </ul>
   );
 }
 

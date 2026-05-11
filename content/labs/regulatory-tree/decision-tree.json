@@ -1,0 +1,89 @@
+{
+  "version": "2026.1",
+  "framework": "NERC Mini-Grid Regulations 2026",
+  "questions": [
+    {
+      "id": "interconnect",
+      "prompt": "Is the project isolated from, or interconnected with, a DisCo network?",
+      "options": [
+        { "value": "isolated", "label": "Isolated" },
+        { "value": "interconnected", "label": "Interconnected (will connect to the DisCo feeder)" }
+      ]
+    },
+    {
+      "id": "capacity",
+      "prompt": "Planned installed capacity (kW):",
+      "type": "number",
+      "min": 1,
+      "max": 10000,
+      "step": 1
+    },
+    {
+      "id": "state-serc",
+      "prompt": "Is the state where the site is located operating its own SERC?",
+      "options": [
+        { "value": "yes", "label": "Yes — state has an operational SERC" },
+        { "value": "no", "label": "No / unsure — fall to NERC" }
+      ]
+    },
+    {
+      "id": "land",
+      "prompt": "Is the land for the array, control room, and distribution under documented community/landowner agreement?",
+      "options": [
+        { "value": "yes", "label": "Yes — written agreement and access rights" },
+        { "value": "no", "label": "No / informal" }
+      ]
+    },
+    {
+      "id": "imports",
+      "prompt": "Will any major regulated component be imported into Nigeria?",
+      "options": [
+        { "value": "yes", "label": "Yes — modules, batteries, or inverters from outside Nigeria" },
+        { "value": "no", "label": "No — fully local procurement" }
+      ]
+    }
+  ],
+  "outputs": {
+    "regulator": {
+      "label": "Likely primary regulator",
+      "logic": "If state-serc=yes AND interconnect=isolated → SERC. Else → NERC."
+    },
+    "pathway": {
+      "label": "Pathway",
+      "logic": "If capacity ≤ 100 → registration. Else → permit."
+    },
+    "tripartite": {
+      "label": "Tripartite Agreement required?",
+      "logic": "If interconnect=interconnected → required."
+    },
+    "discoClock": {
+      "label": "DisCo notification clock",
+      "logic": "If interconnect=interconnected → 15 business days; silence = no objection."
+    },
+    "nemsa": {
+      "label": "NEMSA inspection",
+      "logic": "Always required before energisation."
+    },
+    "imports": {
+      "label": "Import conformity",
+      "logic": "If imports=yes → SONCAP. If local manufacture used → MANCAP."
+    },
+    "coren": {
+      "label": "COREN-signed design",
+      "logic": "Required for projects above the COREN engineering threshold."
+    },
+    "community": {
+      "label": "Community documentation",
+      "logic": "Host Community Agreement on file in all cases; land rights documented per land=yes/no answer."
+    }
+  },
+  "documents_always": [
+    "Single-line diagram",
+    "Bill of Quantities (5 categories)",
+    "Protection & earthing plan",
+    "Metering plan",
+    "Commissioning plan",
+    "O&M plan",
+    "Environmental screening (NESREA if site is sensitive)"
+  ]
+}
