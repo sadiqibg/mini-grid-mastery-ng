@@ -1,0 +1,49 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Which design choice is driven primarily by peak power, not daily energy?",
+    "options": ["PV array size", "Battery capacity", "Inverter rating", "Number of customers"],
+    "answerIndex": 2,
+    "explanation": "Peak power determines how much instantaneous load the inverter and conductors must carry. Daily energy drives PV/battery sizing."
+  },
+  {
+    "id": "q2",
+    "prompt": "Why apply a coincidence factor when adding up appliances?",
+    "options": [
+      "To convert kWh to kW",
+      "Because not every appliance is on at the same instant",
+      "To account for seasonal variation",
+      "To estimate willingness to pay"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q3",
+    "prompt": "A community uses 100 kWh/day with a 10 kW peak vs. another using 100 kWh/day with a 40 kW peak. Which statement is true?",
+    "options": [
+      "They need identical inverters",
+      "They need similar PV arrays but different inverters",
+      "They need different PV arrays and the same inverter",
+      "Daily energy is irrelevant to PV sizing"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q4",
+    "prompt": "Which time band typically holds the biggest peak in a rural Nigerian mini-grid community?",
+    "options": ["Morning (5–9 am)", "Midday (10 am–4 pm)", "Evening (6–10 pm)", "Overnight (10 pm–5 am)"],
+    "answerIndex": 2
+  },
+  {
+    "id": "q5",
+    "prompt": "Shifting a grain mill from 6 pm to 11 am most directly reduces…",
+    "options": [
+      "PV array size",
+      "Required battery storage and possibly inverter rating",
+      "Inverter efficiency",
+      "Annual generator fuel"
+    ],
+    "answerIndex": 1,
+    "explanation": "Moving load into the PV-production window means less energy stored overnight and lower coincident peak with the evening domestic peak."
+  }
+]

@@ -1,0 +1,48 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Which datasheet value sets the maximum string voltage you can feed a charge controller?",
+    "options": ["Pmax", "Vmp", "Voc", "Imp"],
+    "answerIndex": 2
+  },
+  {
+    "id": "q2",
+    "prompt": "Module Voc behaviour as temperature drops:",
+    "options": ["Stays constant", "Rises", "Falls", "Becomes irrelevant"],
+    "answerIndex": 1,
+    "explanation": "Cold mornings → higher Voc. That's the check you do for max string voltage."
+  },
+  {
+    "id": "q3",
+    "prompt": "Which two IEC standards should appear on a module datasheet for mini-grid procurement?",
+    "options": [
+      "IEC 60364 and IEC 61010",
+      "IEC 61215 and IEC 61730",
+      "IEC 60909 and IEC 60044",
+      "IEC 62133 and IEC 62619"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q4",
+    "prompt": "STC conditions are…",
+    "options": [
+      "Site-specific real-world conditions",
+      "1000 W/m², 25 °C cell temperature, AM1.5",
+      "Sokoto noon, harmattan dust factor",
+      "Rainy-season averaged irradiance"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q5",
+    "prompt": "Why is mono-Si the practical default for Nigerian mini-grids?",
+    "options": [
+      "It is the cheapest module technology",
+      "Higher efficiency, better heat performance, and ready local availability",
+      "It is exempt from SONCAP",
+      "Its Voc does not vary with temperature"
+    ],
+    "answerIndex": 1
+  }
+]

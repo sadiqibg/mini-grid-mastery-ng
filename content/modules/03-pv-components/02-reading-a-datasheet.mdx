@@ -1,0 +1,51 @@
+---
+id: lesson-3-02
+title: Reading a PV module datasheet
+module: 03-pv-components
+difficulty: beginner
+pacer_type: reference
+nigerian_context: true
+learning_objective: Identify Pmax, Vmp, Imp, Voc, Isc, and the temperature coefficient on any module datasheet, and explain what each value constrains.
+estimated_minutes: 20
+xp: 20
+prerequisites: [lesson-3-01]
+assessment_type: quiz
+mastery_threshold: 80
+---
+
+## The six numbers you can't ignore
+
+Every module datasheet quotes performance at **Standard Test Conditions** (STC): 1000 W/m²,
+25 °C cell temperature, AM1.5 spectrum. Nigeria does not run at STC.
+
+| Symbol | Meaning | What it constrains |
+|---|---|---|
+| **Pmax** | Maximum power at STC (W) | Headline number; informs cost-per-watt |
+| **Vmp** | Voltage at maximum power | String sizing vs. controller MPPT window |
+| **Imp** | Current at maximum power | Conductor and fuse sizing |
+| **Voc** | Open-circuit voltage (no load) | Maximum string voltage — must not exceed controller max input |
+| **Isc** | Short-circuit current | Combiner box, fuse, and conductor max |
+| **Temp coefficient (Pmax)** | %/°C loss as cell warms | Real-world derating in Nigerian heat |
+
+<Callout tone="warning">
+**Voc rises in cold weather and falls in heat.** Counter-intuitively, the design check for max
+string voltage uses the coldest expected morning temperature, not the hottest noon. Get this
+wrong and you can blow controller inputs on a cool harmattan morning.
+</Callout>
+
+## Mono-Si is the practical default
+
+Three reasons mono-Si dominates Nigerian mini-grid procurement:
+
+1. Highest efficiency → less land or roof area for the same Wp.
+2. Better high-temperature behaviour than polycrystalline.
+3. Logistics: 350–550 Wp class modules are widely available locally and through Apapa imports.
+
+Look for **IEC 61215** (performance) and **IEC 61730** (safety) certifications on the
+datasheet. Both should be present for a module that will be deployed in a regulated mini-grid.
+
+<NigerianExample>
+A common 540 Wp mono module shows: Pmax 540 W, Vmp 41.6 V, Imp 12.98 A, Voc 49.5 V, Isc 13.85 A, temp coeff. –0.34 %/°C. With 8 modules in series → 332.8 V Vmp / 396 V Voc — fine for a 500 V controller, marginal for a 400 V one.
+</NigerianExample>
+
+<FlashcardPrompt deck="pv-terms" lessonId="lesson-3-02" />

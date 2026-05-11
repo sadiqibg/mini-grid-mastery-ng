@@ -1,0 +1,58 @@
+---
+id: lesson-8-02
+title: Preparing inputs that survive scrutiny
+module: 08-simulation
+difficulty: advanced
+pacer_type: procedural
+nigerian_context: true
+learning_objective: List the input categories a HOMER/PVSyst model needs and pick defensible Nigerian defaults where data is missing.
+estimated_minutes: 25
+xp: 20
+prerequisites: [lesson-8-01]
+assessment_type: practice
+mastery_threshold: 80
+---
+
+## What the model needs (and where to source it)
+
+| Category | Specifics | Where it comes from |
+|---|---|---|
+| **Load profile** | Hourly kWh × 365 days | Your Load Survey Lab artifact + a coincidence/seasonal factor pass |
+| **Solar resource** | Monthly GHI, ambient temperature | NASA POWER, Solargis (preferred for bankability), or paid resource report |
+| **PV array** | Tech, rating, derating, tilt, azimuth | Module datasheet + site visit |
+| **Battery** | Chemistry, capacity, round-trip efficiency, DoD, cycle life, calendar life | Datasheet + warranty terms |
+| **Genset** | Rated kW, fuel curve (L/kWh at part loads), minimum load fraction, replacement interval | Manufacturer + local procurement quote |
+| **Inverter** | Rating, efficiency curve, lifetime | Datasheet |
+| **Economics** | Component costs, O&M, fuel price, replacement schedules, discount rate, project life | Quotes + grant terms + market |
+| **Dispatch & control** | Strategy, setpoints | Designer's choice — defend it |
+| **Reliability target** | Maximum unmet load %, autonomy | Project requirement — usually 1–5 % unmet for rural Nigerian sites |
+
+## Defensible Nigerian defaults when you're missing data
+
+These are starting points, not final values. Replace with real data as it arrives.
+
+- **PSH:** 5.5 north / 5.0 middle belt / 4.5 south (rainy-season conservative).
+- **Ambient temperature:** 28 °C average; 32 °C design ambient for derating.
+- **Derating (PV → DC bus):** 0.78–0.82 depending on shading.
+- **Lead-acid battery round-trip:** 0.80 with DoD 0.5; **LFP:** 0.95 with DoD 0.8.
+- **Genset fuel:** start with 0.30 L/kWh at full load; rises sharply below 30 % load.
+- **Diesel price:** sensitivity ±30 % around the day-of-modelling price.
+- **Discount rate:** 12–15 % for private Nigerian developers; lower if blended with DFI debt.
+- **Project life:** 20 years (PV); battery replacement at year 8–10 (LFP) or 5–7 (lead-acid).
+
+<RegulationAlert>
+Fuel-price sensitivity is no longer optional. Nigerian diesel prices moved more than 100 % in
+recent years. Run your simulation with at least three fuel scenarios and report all three.
+</RegulationAlert>
+
+<PracticeTask
+  lessonId="lesson-8-02"
+  href="/portfolio"
+  cta="Open your portfolio"
+  title="Pin your inputs in the capstone"
+>
+You don't need HOMER yet — you need the **input sheet**. Mark your capstone "Simulation inputs"
+section as drafting once you've written down: load profile source, PSH, derating, battery DoD,
+genset fuel curve, diesel price (and your ±30 % sensitivity range), discount rate, and project
+life.
+</PracticeTask>

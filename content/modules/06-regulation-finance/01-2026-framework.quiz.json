@@ -1,0 +1,42 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Under the 2026 framework, the maximum size of a single interconnected mini-grid is…",
+    "options": ["1 MW", "5 MW", "10 MW", "Unlimited"],
+    "answerIndex": 2
+  },
+  {
+    "id": "q2",
+    "prompt": "The registration pathway (no permit needed) applies up to…",
+    "options": ["50 kW", "100 kW", "500 kW", "1 MW"],
+    "answerIndex": 1
+  },
+  {
+    "id": "q3",
+    "prompt": "For an interconnected mini-grid, the DisCo must respond within…",
+    "options": [
+      "5 business days, or the project is denied",
+      "15 business days, with silence counting as no objection",
+      "30 business days, or the DisCo loses jurisdiction",
+      "There is no formal clock"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q4",
+    "prompt": "A Tripartite Agreement is between…",
+    "options": [
+      "Developer, NERC, and SERC",
+      "Developer, DisCo, and community",
+      "REA, the community, and NEMSA",
+      "Developer, EPC contractor, and financier"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q5",
+    "prompt": "Which body inspects installations and meters before energisation?",
+    "options": ["NESREA", "COREN", "NEMSA", "REA"],
+    "answerIndex": 2
+  }
+]

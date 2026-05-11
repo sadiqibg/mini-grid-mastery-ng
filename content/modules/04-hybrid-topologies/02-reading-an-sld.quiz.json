@@ -1,0 +1,47 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What does an SLD show?",
+    "options": [
+      "Conduit and cable routing",
+      "Functional organisation of energy and protection on one schematic line",
+      "Civil works dimensions",
+      "Monthly energy yield"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q2",
+    "prompt": "Which device protects against earth-leakage to prevent electrocution?",
+    "options": ["MCB", "RCD", "SPD", "IMD"],
+    "answerIndex": 1
+  },
+  {
+    "id": "q3",
+    "prompt": "What is the role of an ATS in a solar-diesel hybrid SLD?",
+    "options": [
+      "It regulates DC voltage to the battery",
+      "It chooses which AC source (genset or inverter) feeds the bus",
+      "It clamps lightning surges",
+      "It meters revenue"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q4",
+    "prompt": "An SPD protects against…",
+    "options": [
+      "Earth leakage",
+      "Overcurrent on AC branches",
+      "Lightning and switching surges",
+      "Battery overcharge"
+    ],
+    "answerIndex": 2
+  },
+  {
+    "id": "q5",
+    "prompt": "Where does the mini-grid electrically meet the DisCo feeder in an interconnected design?",
+    "options": ["The combiner box", "The PCC (point of common coupling)", "The customer meter", "The BMS"],
+    "answerIndex": 1
+  }
+]

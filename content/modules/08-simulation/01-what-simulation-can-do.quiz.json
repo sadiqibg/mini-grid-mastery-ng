@@ -1,0 +1,57 @@
+[
+  {
+    "id": "q1",
+    "prompt": "HOMER Pro is best used for…",
+    "options": [
+      "Detailed PV yield modelling",
+      "Sizing-and-dispatch optimisation across PV/battery/genset combinations",
+      "Tariff approval filings",
+      "Regulatory submissions"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q2",
+    "prompt": "PVSyst is best used for…",
+    "options": [
+      "Hybrid sizing optimisation",
+      "Detailed PV system yield given tilt, shading, and degradation",
+      "Battery dispatch tuning",
+      "Genset fuel scheduling"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q3",
+    "prompt": "Which is a known limitation of simulation tools?",
+    "options": [
+      "They cannot calculate NPC",
+      "They do not observe real demand; output is only as good as input",
+      "They can't compare more than two systems",
+      "They don't model batteries"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q4",
+    "prompt": "Best practice when you're least sure about a parameter (e.g. fuel price) is to…",
+    "options": [
+      "Use the headline estimate and move on",
+      "Sensitivity-test it across a realistic range",
+      "Average historical and forecast values",
+      "Hide it in OPEX"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q5",
+    "prompt": "A simulation predicts LCoE = ₦187/kWh and the field result is ₦224/kWh six months later. Most likely cause?",
+    "options": [
+      "The tool is broken",
+      "Inputs (load profile, fuel price, or autonomy) didn't match reality",
+      "Modules degraded faster than expected",
+      "Tariff approval moved the goalposts"
+    ],
+    "answerIndex": 1
+  }
+]

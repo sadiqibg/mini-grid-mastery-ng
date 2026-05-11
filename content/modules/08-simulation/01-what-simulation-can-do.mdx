@@ -1,0 +1,54 @@
+---
+id: lesson-8-01
+title: What HOMER and PVSyst can — and cannot — tell you
+module: 08-simulation
+difficulty: advanced
+pacer_type: analogous
+nigerian_context: true
+learning_objective: State the questions a simulation tool answers well and the questions it can't.
+estimated_minutes: 20
+xp: 20
+prerequisites: [lesson-7-03]
+assessment_type: quiz
+mastery_threshold: 80
+---
+
+## Two tools, two questions
+
+| Tool | Strongest at |
+|---|---|
+| **HOMER Pro** | Hybrid system optimisation — what combination of PV, battery, genset, and dispatch minimises LCoE under your constraints |
+| **PVSyst** | Detailed PV system yield — what the array will produce hour-by-hour given site, tilt, shading, and degradation |
+
+Most mini-grid developers use HOMER to settle the **sizing and dispatch question**, then bring
+the chosen design into PVSyst (or directly into procurement) for **yield validation**.
+
+## What simulation does well
+
+- Compares hundreds of `(PV, battery, genset)` candidates against the same load profile and
+  resource data — work that's not feasible by hand.
+- Reports NPC, LCoE, unmet load, renewable fraction, fuel use per candidate.
+- Stress-tests against fuel price scenarios.
+- Quantifies the cost of an arbitrary reliability target ("99 % vs 99.9 %").
+
+## What simulation does not do
+
+- It does not **observe demand**. If your load profile is wrong, every output is wrong with
+  conviction.
+- It does not **value community trust**. A simulation may prefer a smaller battery; a community
+  used to candle-light failures may need the bigger one to actually pay.
+- It does not **schedule construction** or **clear regulators**.
+- It does not catch **shading** that wasn't entered. Garbage in, polished garbage out.
+
+<Callout tone="warning">
+A simulation result that says LCoE = ₦187/kWh ± nothing is reporting precision, not accuracy.
+Always sensitivity-test the inputs you're least sure about: load profile, fuel price, battery
+replacement interval, discount rate.
+</Callout>
+
+<NigerianExample>
+A common failure mode: a developer simulates with a "best estimate" load profile of 250 kWh/day
+and gets a 60 kWp PV / 200 kWh battery design. Real metered load after six months is 180
+kWh/day — the PV is curtailed daily, battery is under-cycled, and LCoE is 20 % worse than
+modelled. The simulation wasn't wrong; the input was.
+</NigerianExample>

@@ -1,0 +1,65 @@
+---
+id: lesson-5-01
+title: Hybrid sizing is one optimisation, not five
+module: 05-sizing-boq-protection
+difficulty: intermediate
+pacer_type: analogous
+nigerian_context: true
+learning_objective: Explain why component-by-component sizing produces a worse system than integrated sizing, and where the analogies to standalone sizing break down.
+estimated_minutes: 20
+xp: 20
+prerequisites: [lesson-4-02]
+assessment_type: quiz
+mastery_threshold: 80
+---
+
+Sizing PV, then sizing the battery, then sizing the generator, then sizing the inverter as if
+each one was independent is the most common amateur mistake. It produces:
+
+- Oversized PV that you can't absorb or store on bright days
+- Undersized battery that gets cycled to death by the genset
+- Oversized genset that runs at low load → poor fuel efficiency → wears out
+- An inverter that's right for the average day and wrong for the worst day
+
+Hybrid sizing is **one optimisation problem** over the **same load profile**, the **same PSH**,
+the **same fuel cost**, and the **same dispatch strategy**.
+
+## Three dispatch strategies you'll meet
+
+| Strategy | What it does | Best for |
+|---|---|---|
+| **Load following** | Genset matches load; battery and PV fill gaps | High variable load, expensive fuel |
+| **Cycle charging** | Genset runs at high load and tops up battery | Predictable load, want fewer genset starts |
+| **Combined** | Switches between the two based on time of day | Real Nigerian sites — most of them |
+
+Dispatch is **not** a setting you pick last. It feeds back into how much battery and how much
+PV you actually need. A cycle-charging design with a small battery is a different system from
+a load-following design with a big one, even when the topology is identical.
+
+<Callout tone="warning">
+"We'll sort dispatch out at commissioning" is a red flag in any project plan. Dispatch belongs
+in sizing.
+</Callout>
+
+## Where the standalone analogy fails
+
+You learned the formula `PV = Demand / (PSH × derating)` in Module 3. Don't use it for hybrid:
+
+- It assumes PV is the only generation source. It isn't.
+- It ignores the genset's contribution on the worst week.
+- It ignores curtailment on the best week (PV you can't use).
+- It implies one right answer per demand number. There are infinitely many sizing pairs that
+  meet a hybrid LCoE or reliability target; the optimiser finds the cheapest.
+
+## What the optimiser is actually doing
+
+It searches over `(PV size, battery size, genset size, dispatch)` and reports each candidate's:
+
+- **Net Present Cost (NPC)** — total lifetime cost discounted to today
+- **LCoE** — total cost ÷ total energy served
+- **Unmet load** — fraction of demand never delivered
+- **Renewable fraction** — share of energy from PV vs genset
+- **Fuel consumed** — annual litres of diesel
+
+Module 8 walks you through preparing the inputs for HOMER Pro or PVSyst. For now, internalise
+that **sizing is search, not arithmetic**.

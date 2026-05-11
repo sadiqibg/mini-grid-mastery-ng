@@ -1,0 +1,18 @@
+{
+  "id": "pv-terms",
+  "title": "PV components & sizing vocabulary",
+  "cards": [
+    { "id": "fc-pv-1", "q": "What is Pmax on a module datasheet?", "a": "The maximum power output (W) at Standard Test Conditions (1000 W/m², 25 °C cell, AM1.5)." },
+    { "id": "fc-pv-2", "q": "What is Vmp?", "a": "The module voltage at the maximum power point under STC." },
+    { "id": "fc-pv-3", "q": "What is Imp?", "a": "The module current at the maximum power point under STC." },
+    { "id": "fc-pv-4", "q": "Why does Voc rise on a cold morning?", "a": "Module open-circuit voltage has a negative temperature coefficient — cold cells → higher Voc. This is the worst case to check against controller max input voltage." },
+    { "id": "fc-pv-5", "q": "What is a string?", "a": "A series-connected group of modules. Voltages add; current is set by the lowest-current module." },
+    { "id": "fc-pv-6", "q": "What is an array?", "a": "Two or more strings wired in parallel. Currents add; voltage is set by the lowest-voltage string." },
+    { "id": "fc-pv-7", "q": "What does IEC 61215 certify?", "a": "Performance and durability testing for PV modules — qualifies a module's long-term outdoor reliability." },
+    { "id": "fc-pv-8", "q": "What does IEC 61730 certify?", "a": "Safety qualification for PV modules — electrical, mechanical, and fire-safety construction requirements." },
+    { "id": "fc-pv-9", "q": "What is a typical early-pass PV derating factor?", "a": "Around 0.75 — combines temperature, soiling, wiring, mismatch, and conversion losses for a first sizing pass." },
+    { "id": "fc-pv-10", "q": "What is DoD?", "a": "Depth of Discharge — the fraction of a battery's nameplate capacity used per cycle. Lead-acid: ~0.5; LFP: ~0.8." },
+    { "id": "fc-pv-11", "q": "What is autonomy?", "a": "The number of consecutive no-sun days the battery bank can serve full load. Typical: 1.0–1.5 days with a generator, 2–3 days without." },
+    { "id": "fc-pv-12", "q": "Why MPPT for mini-grid scale?", "a": "MPPT controllers harvest 5–15% more energy than PWM across changing conditions, paying back the cost difference quickly." }
+  ]
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "q1",
+    "prompt": "LCoE is best described as…",
+    "options": [
+      "The CAPEX divided by peak power",
+      "Net Present Cost divided by lifetime energy served",
+      "The DisCo's published feed-in tariff",
+      "Monthly OPEX divided by customer count"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q2",
+    "prompt": "Willingness-to-pay is…",
+    "options": [
+      "A regulatory cap on tariffs",
+      "The cost-reflective tariff approved by NERC",
+      "The price customers actually accept and pay",
+      "The tariff in the Tripartite Agreement"
+    ],
+    "answerIndex": 2
+  },
+  {
+    "id": "q3",
+    "prompt": "When cost-reflective tariff exceeds WTP, which option leaves a single-band tariff intact?",
+    "options": [
+      "Tariff bands by customer class",
+      "DARES grant funding",
+      "Shrinking the system",
+      "Disconnecting domestic customers"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q4",
+    "prompt": "Why divide an LCoE by collection efficiency before setting a tariff?",
+    "options": [
+      "To convert ₦ to USD",
+      "Because not all metered energy is paid for; the tariff must recover from what is collected",
+      "To satisfy NERC's tariff filing format",
+      "Collection efficiency doesn't affect tariff"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q5",
+    "prompt": "Two projects deliver the same kWh/year. Project A has a higher LCoE than Project B. Most likely reason?",
+    "options": [
+      "Higher CAPEX, more diesel, or shorter battery life in A",
+      "B has a worse PSH",
+      "A serves more customers",
+      "A is interconnected"
+    ],
+    "answerIndex": 0
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Why does sizing PV, then battery, then genset independently produce a worse system?",
+    "options": [
+      "Because each component has a different supplier",
+      "Because each block's size depends on the others through the chosen dispatch",
+      "Because batteries always come last",
+      "Because the simulator can't read the spreadsheet"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q2",
+    "prompt": "Cycle-charging dispatch means…",
+    "options": [
+      "The genset only runs when the battery is full",
+      "The genset matches load instantaneously and battery covers gaps",
+      "The genset runs at high load and tops up the battery",
+      "PV is curtailed every cycle"
+    ],
+    "answerIndex": 2
+  },
+  {
+    "id": "q3",
+    "prompt": "What does LCoE measure?",
+    "options": [
+      "Cost per litre of fuel",
+      "Lifetime cost divided by lifetime energy served",
+      "Net present cost minus subsidies",
+      "Tariff approved by the regulator"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q4",
+    "prompt": "Unmet load in a hybrid optimisation report means…",
+    "options": [
+      "Energy generated but not sold",
+      "Customers who have not connected yet",
+      "Fraction of demand that the system never delivers",
+      "Battery capacity unused at end of day"
+    ],
+    "answerIndex": 2
+  },
+  {
+    "id": "q5",
+    "prompt": "Which statement is true?",
+    "options": [
+      "There is exactly one optimal sizing per demand profile",
+      "Many sizings meet a target; the optimiser finds the lowest-cost",
+      "Dispatch is decided after sizing",
+      "Renewable fraction does not affect LCoE"
+    ],
+    "answerIndex": 1
+  }
+]

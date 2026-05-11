@@ -1,0 +1,47 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Which block regulates DC power between modules and battery?",
+    "options": ["Inverter", "Charge controller", "Combiner box", "Disconnect switch"],
+    "answerIndex": 1
+  },
+  {
+    "id": "q2",
+    "prompt": "Wiring two 24 V / 10 A modules in series gives you…",
+    "options": ["24 V / 20 A", "48 V / 10 A", "48 V / 20 A", "24 V / 10 A"],
+    "answerIndex": 1
+  },
+  {
+    "id": "q3",
+    "prompt": "What is the main reason to prefer MPPT over PWM at mini-grid scale?",
+    "options": [
+      "MPPT controllers are cheaper",
+      "MPPT extracts ~5–15% more energy across changing conditions",
+      "PWM cannot charge lithium batteries",
+      "MPPT eliminates the need for fuses"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q4",
+    "prompt": "An undersized inverter most directly causes…",
+    "options": [
+      "Daily energy shortfall",
+      "Tripping under peak demand and voltage sag",
+      "Battery deep cycling",
+      "Reduced PSH"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q5",
+    "prompt": "What is the Maximum Power Point?",
+    "options": [
+      "The instant of highest GHI in the day",
+      "The point on a module's I–V curve where V × I is highest",
+      "The maximum voltage the controller can accept",
+      "The peak power rating in the datasheet"
+    ],
+    "answerIndex": 1
+  }
+]

@@ -1,0 +1,47 @@
+---
+id: lesson-5-02
+title: A complete BoQ — not just modules, batteries, inverters
+module: 05-sizing-boq-protection
+difficulty: intermediate
+pacer_type: evidence
+nigerian_context: true
+learning_objective: List the five BoQ categories every hybrid project must cover, and identify what gets missed when a developer cuts the BoQ short.
+estimated_minutes: 20
+xp: 20
+prerequisites: [lesson-5-01]
+assessment_type: quiz
+mastery_threshold: 80
+---
+
+## Five categories, not one
+
+Many early-stage developers build a BoQ with three line items: PV modules, batteries, inverter.
+That is the **generation block** only. A real hybrid BoQ has **five categories**:
+
+| Category | Examples of line items |
+|---|---|
+| **Generation** | PV modules, mounting structures, inverters, charge controllers, genset, fuel tank |
+| **Storage** | Battery bank, BMS, battery enclosure, cooling |
+| **Distribution & power management** | LV cables, poles, drop-cables, distribution box, protection devices, ATS, surge protection, meters, load limiters |
+| **Civil works & installation** | Control room, foundation, fencing, signage, conduit, earth electrodes, labour |
+| **General items** | Logistics, commissioning, spares, safety equipment (PPE), labels, training, as-built drawings, documentation |
+
+## Where projects fall over
+
+<EvidenceQuote lessonId="lesson-5-02" source="Course doc §9 — Module 5 BoQ warnings">
+Incomplete BoQs focused only on PV modules, batteries, and inverters are the leading cause of
+project cost overruns. A complete hybrid BoQ includes generation, storage, distribution,
+civil works, installation, commissioning, logistics, safety equipment, labels, signage, and
+as-built drawings.
+</EvidenceQuote>
+
+Three categories developers routinely under-spec or skip:
+
+- **Surge protection and earthing.** Outdoor sites in Nigeria see meaningful lightning activity. SPDs and a proper earth electrode array are not optional. They are also cheap if specified up-front and expensive if added after a strike.
+- **Spares.** Without on-site spare fuses, MCBs, RCDs, and at least one spare inverter card, a single fault can mean weeks of downtime. Spares belong in the BoQ.
+- **As-built drawings and documentation.** Required for NEMSA inspection and for the next engineer who has to maintain the site three years from now.
+
+<Callout tone="warning">
+If a BoQ does not include logistics, signage, commissioning, and training, it is incomplete.
+Ask for the missing categories before approving spend.
+</Callout>

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What is the gate question between Feasibility and Planning & Design?",
+    "options": [
+      "Is the regulatory pathway clear?",
+      "Does the engineering work, and can the unit economics close?",
+      "Are funds and components under contract?",
+      "Is commissioning passing in order?"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q2",
+    "prompt": "The most common reason projects die between Stage 1 and Stage 2 is…",
+    "options": [
+      "Wrong inverter selection",
+      "Confusing initial enthusiasm with sustained demand",
+      "Missing surge protection",
+      "Wrong tariff bands"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q3",
+    "prompt": "A project killed at Stage 2 should be viewed as…",
+    "options": [
+      "A failure of the developer",
+      "A win, because it saves capital from being wasted at Stages 3–5",
+      "Reason to never work in that community again",
+      "Automatic disqualification from grants"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q4",
+    "prompt": "Which sequence is correct?",
+    "options": [
+      "Procurement → Feasibility → Construction → Handover",
+      "Opportunity → Feasibility → Planning → Procurement → Construction → Operations",
+      "Operations → Procurement → Construction → Feasibility",
+      "Construction → Planning → Procurement → Opportunity"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q5",
+    "prompt": "Why must regulator (NERC vs SERC) be determined before procurement?",
+    "options": [
+      "Because suppliers refuse to quote otherwise",
+      "Because the regulator shapes documentation and timelines that affect what gets procured and when",
+      "Because procurement triggers NERC inspection",
+      "Because SERCs use different IEC standards"
+    ],
+    "answerIndex": 1
+  }
+]

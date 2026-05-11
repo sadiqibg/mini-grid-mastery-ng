@@ -1,0 +1,49 @@
+---
+id: lesson-3-01
+title: The four blocks of every PV system
+module: 03-pv-components
+difficulty: beginner
+pacer_type: conceptual
+nigerian_context: true
+learning_objective: Name the four core PV-system blocks, what each one does, and what happens when one is undersized.
+estimated_minutes: 15
+xp: 20
+prerequisites: [lesson-2-03]
+assessment_type: quiz
+mastery_threshold: 80
+---
+
+Every PV-based mini-grid is built from four blocks. Get the *function* of each one fixed before
+you start reading datasheets.
+
+| Block | Function | Undersized → |
+|---|---|---|
+| **Module (panel)** | Converts sunlight into DC power | Daily energy shortfall; unmet load |
+| **Charge controller** | Regulates DC power between modules and battery | Battery damage, lost energy, blown fuses |
+| **Battery** | Stores energy for night / no-sun hours | Reliability collapse; deep cycling kills the bank |
+| **Inverter** | Converts DC to AC for the distribution network | Tripping under peak; voltage sag |
+
+## Series vs parallel — the rule you'll use every day
+
+Modules wired in **series** add their voltages; current is set by the lowest-current module.
+Modules wired in **parallel** add their currents; voltage is set by the lowest-voltage module.
+
+- A **string** is a series of modules.
+- An **array** is one or more strings wired in parallel.
+
+You raise voltage when you want lower current → smaller cables, less I²R loss. You raise
+current when you've reached the controller's max input voltage and still need more power.
+
+<Callout tone="info">
+The water-flow analogy is useful: voltage is pressure, current is flow rate, wires are pipes.
+But it leaks — water doesn't have polarity, doesn't care about reverse current, and pipes
+don't have inductance. Use the analogy to get oriented, then drop it once the real concepts stick.
+</Callout>
+
+## MPPT in one sentence
+
+The **Maximum Power Point** is the operating point on a module's I–V curve where voltage × current is highest. The MPPT in a charge controller continuously hunts for that point as light and temperature change, instead of just clamping voltage like a PWM controller does.
+
+For mini-grid scale, **MPPT is the default** — the 5–15 % more energy it harvests pays back the cost difference quickly.
+
+<ConceptMapPrompt mapId="mini-grid-architecture" lessonId="lesson-3-01" />

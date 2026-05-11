@@ -1,0 +1,47 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Which of the four site-selection criteria is best applied first?",
+    "options": [
+      "Land availability",
+      "Solar resource adequacy",
+      "Community demand and willingness to pay",
+      "Grid proximity"
+    ],
+    "answerIndex": 2
+  },
+  {
+    "id": "q2",
+    "prompt": "A site shows 5.6 PSH on the satellite map. Why might real PSH on the array be materially lower?",
+    "options": [
+      "Satellite data uses STC",
+      "Local shading and microclimate can subtract from headline irradiance",
+      "Maps don't include rainy season",
+      "Satellite data is metric, not imperial"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q3",
+    "prompt": "Bottom-up cost estimation is typically accurate to about…",
+    "options": ["±50 %", "±25 %", "±10 %", "±1 %"],
+    "answerIndex": 2
+  },
+  {
+    "id": "q4",
+    "prompt": "An equipment-only budget for a 250 kW mini-grid will most likely…",
+    "options": [
+      "Be conservative",
+      "Be accurate within ±10 %",
+      "Significantly understate real project cost by ignoring logistics, civils, soft costs, contingency",
+      "Be rejected by the SERC"
+    ],
+    "answerIndex": 2
+  },
+  {
+    "id": "q5",
+    "prompt": "Which method is appropriate at Stage 1 screening?",
+    "options": ["Bottom-up", "Parametric", "Analogous", "Audited final cost"],
+    "answerIndex": 2
+  }
+]

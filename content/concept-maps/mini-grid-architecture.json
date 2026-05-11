@@ -1,0 +1,38 @@
+{
+  "id": "mini-grid-architecture",
+  "title": "Mini-Grid System Architecture",
+  "prompt": "Map the blocks of a solar-battery-diesel hybrid mini-grid and how energy and information flow between them. There is no single correct map — name the relationships in your own words.",
+  "concept_pool": [
+    { "id": "pv_array", "label": "PV array" },
+    { "id": "combiner", "label": "Combiner box" },
+    { "id": "mppt", "label": "MPPT / charge controller" },
+    { "id": "battery", "label": "Battery bank" },
+    { "id": "bms", "label": "BMS" },
+    { "id": "inverter", "label": "Hybrid inverter" },
+    { "id": "genset", "label": "Diesel genset" },
+    { "id": "ats", "label": "ATS" },
+    { "id": "ac_bus", "label": "AC bus" },
+    { "id": "distribution", "label": "Distribution board" },
+    { "id": "customer", "label": "Customer meter / load" },
+    { "id": "earth", "label": "Earthing system" },
+    { "id": "spd", "label": "Surge protection (SPD)" },
+    { "id": "control", "label": "Site controller / dispatch logic" }
+  ],
+  "relatedness_hints": [
+    ["pv_array", "combiner", "these are connected — you decide how"],
+    ["combiner", "mppt", "these are connected — you decide how"],
+    ["mppt", "battery", "these are connected — you decide how"],
+    ["battery", "bms", "these are connected — you decide how"],
+    ["battery", "inverter", "these are connected — you decide how"],
+    ["inverter", "ac_bus", "these are connected — you decide how"],
+    ["genset", "ats", "these are connected — you decide how"],
+    ["ats", "ac_bus", "these are connected — you decide how"],
+    ["ac_bus", "distribution", "these are connected — you decide how"],
+    ["distribution", "customer", "these are connected — you decide how"],
+    ["control", "inverter", "one tells the other what to do — figure out which way the signal flows"],
+    ["earth", "ac_bus", "these are connected for a safety reason — name it"]
+  ],
+  "allow_custom_nodes": true,
+  "min_nodes_to_submit": 7,
+  "min_edges_to_submit": 6
+}

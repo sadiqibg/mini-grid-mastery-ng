@@ -1,0 +1,70 @@
+---
+id: lesson-3-03
+title: Your first stand-alone PV sizing pass
+module: 03-pv-components
+difficulty: beginner
+pacer_type: procedural
+nigerian_context: true
+learning_objective: Size a PV array and battery bank for a daily energy and autonomy target, and recognise where the simple formulas break down.
+estimated_minutes: 25
+xp: 20
+prerequisites: [lesson-3-02]
+assessment_type: practice
+mastery_threshold: 80
+---
+
+## The two formulas you'll use first
+
+For a quick sizing pass before you open a simulation tool:
+
+```
+PV array (W)        = Daily demand (Wh) / (PSH × derating)
+Battery bank (Wh)   = Daily demand (Wh) × Autonomy days / DoD
+```
+
+- **Derating** lumps temperature, soiling, wiring, and conversion losses. Use **0.75** for early
+  passes; refine when you have component data.
+- **Autonomy days** = how many no-sun days the battery must carry. **1.0–1.5 days** is common
+  for hybrid systems with a generator backup; **2–3 days** if there's no generator.
+- **DoD (depth of discharge)** = the share of nameplate capacity you'll actually use per cycle.
+  Lead-acid: **0.5**. Lithium iron phosphate (LFP): **0.8**.
+
+## A worked example
+
+Say a community needs **80 kWh/day**. Site PSH (rainy-season conservative) = **4.5**.
+
+- **PV array** = 80,000 / (4.5 × 0.75) ≈ **23.7 kWp**. Round up to next clean string count — call it **24 kWp** with 540 Wp modules → ~45 modules.
+- **Battery (LFP, 1.5 days autonomy)** = 80,000 × 1.5 / 0.8 = **150 kWh** nameplate.
+
+Sanity check: a 48 V system carrying 150 kWh ≈ 3,125 Ah, which is unworkable at 48 V; this
+project lives at **400–600 V battery bus** or in a high-voltage hybrid inverter architecture.
+Voltage choice falls out of the size, not the other way around.
+
+<Callout tone="warning">
+The simple formula treats the battery as a perfect bucket. Real batteries have charge
+efficiency, calendar ageing, and minimum SoC for warranty. Treat the 0.8 DoD and the autonomy
+days as conservative buffers, not stretch goals.
+</Callout>
+
+## Why this pass isn't the final design
+
+Everything above assumes a single energy total. It says nothing about:
+
+- The **shape** of the load profile (peak power, midday vs evening).
+- Generator dispatch (covered in Module 5).
+- LCoE and tariff feasibility (covered in Module 6).
+- Real-world contingency (covered in Module 7).
+
+Use this pass for go/no-go scoping. Always come back with a full hybrid sizing — that's the
+optimisation problem, not this.
+
+<PracticeTask
+  lessonId="lesson-3-03"
+  href="/labs/pv-sizing"
+  cta="Open PV Sizing Lab"
+  title="Run your community through the sizing lab"
+>
+Use the daily-demand number from your Load Survey artifact. Try three derating values (0.70,
+0.75, 0.80) and notice how the array size moves. Save the artifact when you're satisfied —
+it'll flow into your capstone automatically.
+</PracticeTask>

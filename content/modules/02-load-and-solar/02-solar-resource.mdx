@@ -1,0 +1,60 @@
+---
+id: lesson-2-02
+title: Solar resource and Peak Sun Hours across Nigeria
+module: 02-load-and-solar
+difficulty: beginner
+pacer_type: evidence
+nigerian_context: true
+learning_objective: Distinguish GHI from PSH and apply realistic Nigerian regional values to a quick sizing check.
+estimated_minutes: 15
+xp: 20
+prerequisites: [lesson-2-01]
+assessment_type: quiz
+mastery_threshold: 80
+---
+
+## Two ways to talk about sunlight
+
+- **GHI (Global Horizontal Irradiance)** — instantaneous solar power on a horizontal surface, in **W/m²**. Peaks near noon at ~1000 W/m² on a clear day.
+- **PSH (Peak Sun Hours)** — the equivalent number of hours of 1000 W/m² that would deliver the same daily energy. PSH is GHI integrated over the day and divided by 1000.
+
+PSH is the number you actually use for sizing. It collapses an entire day's irradiance into one
+multiplier:
+
+> **Daily PV energy (Wh) ≈ Array Watts × PSH × derating**
+
+## Regional values to start from
+
+These are reasonable starting numbers for Nigeria, before you replace them with site data:
+
+| Zone | Typical PSH (annual avg) | Notes |
+|---|---|---|
+| Far north (Sokoto, Katsina, Yobe) | **5.8–6.2** | Highest. Dust and harmattan haze reduce dry-season output. |
+| Middle belt (Abuja, Jos, Kaduna) | **5.0–5.5** | Strong, with afternoon cloud build-up in the rainy season. |
+| South-west (Lagos, Ibadan, Akure) | **4.5–5.0** | Heavier wet-season cloud. |
+| South-east / Niger Delta | **4.0–4.5** | Wettest. Plan for the long rainy season. |
+
+<RegulationAlert>
+These are rule-of-thumb numbers for early screening only. For a real project, pull
+satellite-derived data (NASA POWER, Solargis, or a paid resource assessment) for the specific
+coordinates of your site.
+</RegulationAlert>
+
+## Derating: why nameplate watts lie
+
+A 500 Wp module rarely produces 500 W in the field. Real-world derating stacks:
+
+- **Temperature** — modules lose ~0.35–0.45 %/°C above 25 °C. In Nigerian sun a module surface can hit 55–65 °C → 10–15 % loss alone.
+- **Soiling** — dust and harmattan film. 3–8 % unless cleaned.
+- **Wiring and mismatch** — 2–4 %.
+- **Inverter and battery round-trip** — 5–15 %.
+
+A combined **0.75 derating** is conservative and common for early sizing. Refine when you have
+component-level data.
+
+<EvidenceQuote lessonId="lesson-2-02" source="Course doc §6 — Module 2 PACER evidence">
+Store regional PSH assumptions. PSH varies meaningfully across Nigerian zones, and rainy
+season output is materially lower than dry season — design must survive the worst month, not the average.
+</EvidenceQuote>
+
+<FlashcardPrompt deck="electricity-basics" lessonId="lesson-2-02" />

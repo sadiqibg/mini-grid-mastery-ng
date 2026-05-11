@@ -1,0 +1,63 @@
+---
+id: lesson-2-01
+title: What a load profile actually shows
+module: 02-load-and-solar
+difficulty: beginner
+pacer_type: conceptual
+nigerian_context: true
+learning_objective: Read a 24-hour load profile and explain why peak power and daily energy are two different design constraints.
+estimated_minutes: 20
+xp: 20
+prerequisites: [lesson-1-02]
+assessment_type: quiz
+mastery_threshold: 80
+---
+
+## Two numbers, not one
+
+Every load profile carries two numbers that drive different parts of the system:
+
+- **Peak power (kW)** — the highest instantaneous demand. Sets inverter and conductor sizing.
+- **Daily energy (kWh)** — the area under the curve. Sets PV array and battery sizing.
+
+A community that uses 100 kWh/day can have a 10 kW peak or a 40 kW peak. The PV array
+needed is similar; the inverter, distribution conductors, and protection equipment are not.
+
+<Callout tone="info">
+A flat profile is cheaper to serve than a spiky one. If you can shift a grain mill from 6 pm
+(coincident with lighting peak) to 11 am (coincident with PV peak), you reduce required
+storage and may avoid an inverter upgrade.
+</Callout>
+
+## The shape of a Nigerian community profile
+
+Three time bands typically dominate:
+
+1. **Morning rise (5 am–9 am)** — irons, hot plates, water pumps, early commerce.
+2. **Midday productive use (10 am–4 pm)** — mills, welders, cold rooms, fans.
+3. **Evening domestic peak (6 pm–10 pm)** — lights, TVs, phones, fans. This is the biggest peak
+   in most rural communities because it stacks on top of any commercial activity that's still
+   open.
+
+<NigerianExample>
+In a northern agrarian community surveyed for a 60-customer mini-grid, midday demand was
+~12 kW (irrigation + 2 mills), and evening peak was ~18 kW (mostly lights and phone charging
+across 60 households). Same community, two different design constraints.
+</NigerianExample>
+
+## Why "estimated load × hours" misleads
+
+Adding up nameplate ratings overestimates real demand:
+
+- Not every appliance is on at once → apply a **coincidence factor** per appliance class.
+- Seasonal use varies → apply a **seasonal factor** for fans, irrigation, cold storage.
+- Productive-use customers under-report hours in a survey; verify with a meter reading.
+
+This is why the Load Survey Lab on this site asks for *both* coincidence and seasonal factors.
+Skipping them is the most common reason early projects oversize PV and undersize batteries.
+
+<EvidenceQuote lessonId="lesson-2-01" source="Course doc §12 — Load Survey Lab inputs">
+The Load Survey Lab requires: customer class, appliance, quantity, power rating, hours per day,
+coincidence factor, seasonal factor, productive-use category. Outputs: daily Wh, peak W,
+load profile chart, demand-risk comments.
+</EvidenceQuote>

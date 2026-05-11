@@ -1,0 +1,64 @@
+---
+id: lesson-5-03
+title: Commissioning, metering, and lifecycle O&M
+module: 05-sizing-boq-protection
+difficulty: intermediate
+pacer_type: procedural
+nigerian_context: true
+learning_objective: Sequence a four-stage commissioning protocol and describe the O&M functions that turn a built site into a reliable utility.
+estimated_minutes: 25
+xp: 20
+prerequisites: [lesson-5-02]
+assessment_type: practice
+mastery_threshold: 80
+---
+
+## The four-stage commissioning sequence
+
+Commissioning is not "turn it on and see what happens." It is a fixed sequence designed to
+fail safely if anything is wrong:
+
+1. **Visual and mechanical checks** — torque on terminals, polarity, labelling, earthing, signage, enclosure integrity.
+2. **Pre-energisation safety checks** — insulation resistance, continuity, earth-fault loop, RCD trip times, SPD seating.
+3. **Operational testing** — energise sub-systems in sequence (DC side, then inverter, then AC bus, then loads); verify auto-restart, transfer to genset, return to inverter.
+4. **PV string and battery checks** — Voc per string, Isc per string, MPPT tracking, battery SoC, balance, BMS communication.
+
+Skipping any stage means a fault you would have caught is now buried inside a live system.
+
+## Metering — choose before you commission
+
+Three things to fix before energisation:
+
+- **Meter class.** Class 1.0 or better for revenue. Don't accept Class 2.0 for revenue metering on a Nigerian mini-grid — collection accuracy depends on it.
+- **Smart meter functions.** Remote read, prepay, disconnect, tamper alert. Pick deliberately; retrofitting features later costs more than choosing them now.
+- **Load limiters.** A pre-set kW cap per customer. Useful as a tariff-band tool and as protection against unexpected large appliances. Common in productive-use packages.
+
+## O&M as a lifecycle function
+
+A mini-grid is a small utility business. Reliable operation needs all of these:
+
+| Function | What it covers |
+|---|---|
+| **Preventive maintenance** | Module cleaning, fastener checks, battery balancing, inverter firmware |
+| **Corrective maintenance** | Fault diagnosis, spares fitting, customer outage response |
+| **Performance monitoring** | Daily energy, daily revenue, peak power, unmet load, fuel consumption |
+| **Customer service** | Billing, complaints, tariff queries, disconnections / reconnections |
+| **Safety & compliance** | Logs, lock-out / tag-out, PPE, periodic NEMSA-ready audits |
+| **Documentation** | As-built drawings updated, fault log, work orders, monthly report |
+
+<EvidenceQuote lessonId="lesson-5-03" source="Course doc §9 — Module 5 O&M lifecycle">
+Day 5 frames O&M as a lifecycle function covering maintenance schedules, spares, technician
+readiness, work orders, safety, documentation, cost control, and monthly performance
+monitoring. Treat O&M as a fixed monthly cost line, not an afterthought.
+</EvidenceQuote>
+
+<PracticeTask
+  lessonId="lesson-5-03"
+  href="/portfolio"
+  cta="Open your portfolio"
+  title="Mark protection + O&M sections complete in your capstone"
+>
+You have authored enough plan material in this module to mark the **Protection plan**,
+**Metering plan**, **Commissioning plan**, and **O&M plan** sections of your capstone tracker
+as drafting (or complete, if you wrote the supporting paragraphs).
+</PracticeTask>

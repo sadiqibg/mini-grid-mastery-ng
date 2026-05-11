@@ -1,0 +1,48 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What does PSH represent?",
+    "options": [
+      "Peak instantaneous irradiance in W/m²",
+      "Equivalent hours of 1000 W/m² irradiance that deliver the same daily energy",
+      "Number of hours the sun is above the horizon",
+      "Average module surface temperature"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q2",
+    "prompt": "Which Nigerian zone typically has the highest annual-average PSH?",
+    "options": ["Far north", "Middle belt", "South-west", "Niger Delta"],
+    "answerIndex": 0
+  },
+  {
+    "id": "q3",
+    "prompt": "A 0.75 derating factor in early sizing accounts for…",
+    "options": [
+      "Sales tax",
+      "Temperature, soiling, wiring losses, and conversion losses combined",
+      "Battery autonomy days",
+      "Inverter MPPT range"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q4",
+    "prompt": "Why is rainy-season PSH the relevant design number?",
+    "options": [
+      "Tariffs are higher in the rainy season",
+      "A system that survives the worst month survives the year",
+      "Modules age faster in the wet season",
+      "PSH is constant year-round"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q5",
+    "prompt": "Module surface temperature can reach 60 °C in Nigerian sun. What is the rough output penalty if the temperature coefficient is –0.4%/°C?",
+    "options": ["~2%", "~7%", "~14%", "~25%"],
+    "answerIndex": 2,
+    "explanation": "(60 − 25) × 0.4% ≈ 14%."
+  }
+]

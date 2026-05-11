@@ -1,0 +1,47 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Topology answers which question?",
+    "options": [
+      "How blocks join electrically",
+      "Which generation/storage/conversion blocks exist",
+      "How the system decides what runs when",
+      "What the tariff should be"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q2",
+    "prompt": "Which coupling is typically preferred for retrofitting onto an existing diesel network?",
+    "options": ["DC-coupled", "AC-coupled", "Inverter-less", "Battery-only"],
+    "answerIndex": 1
+  },
+  {
+    "id": "q3",
+    "prompt": "Which is a control-philosophy choice, not a topology choice?",
+    "options": ["Add a hydro turbine", "Switch from PWM to MPPT", "Run cycle-charging vs load-following", "Replace lead-acid with LFP"],
+    "answerIndex": 2
+  },
+  {
+    "id": "q4",
+    "prompt": "Why is DC-coupled often slightly more efficient off-grid?",
+    "options": [
+      "DC is always cheaper",
+      "PV-to-load only passes through one inverter, not two",
+      "DC eliminates the need for protection",
+      "Batteries charge faster on DC"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q5",
+    "prompt": "A solar-battery-diesel system that runs load-following is best described as…",
+    "options": [
+      "A different topology from a cycle-charging solar-battery-diesel system",
+      "The same topology with a different control philosophy",
+      "DC-coupled by definition",
+      "Not actually a hybrid"
+    ],
+    "answerIndex": 1
+  }
+]

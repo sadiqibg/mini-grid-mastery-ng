@@ -1,0 +1,56 @@
+---
+id: lesson-4-02
+title: Reading a single-line diagram
+module: 04-hybrid-topologies
+difficulty: intermediate
+pacer_type: reference
+nigerian_context: true
+learning_objective: Identify the canonical blocks of a hybrid mini-grid SLD and name what each protection device guards against.
+estimated_minutes: 25
+xp: 20
+prerequisites: [lesson-4-01]
+assessment_type: quiz
+mastery_threshold: 80
+---
+
+## What an SLD is — and is not
+
+A **Single-Line Diagram** uses one line to represent any number of phase conductors. It shows
+how energy and protection are organised, not the physical layout. An SLD answers questions
+like: *"What protects the battery from a fault on the load side?"* and *"Where is the point of
+common coupling with the grid?"* It does **not** answer *"Which conduit runs where?"*
+
+## Blocks you'll see on almost every mini-grid SLD
+
+| Block | Symbol notes | Purpose |
+|---|---|---|
+| PV array | Stack of cells/modules; one combiner per string group | DC generation |
+| Combiner box | Multiple inputs into one feeder | Aggregate strings, host string fuses |
+| Charge controller / MPPT | Rectangle with V_in, V_out | DC regulation |
+| BESS (battery) | Battery symbol with BMS block | Storage |
+| Inverter / Hybrid inverter | DC ↔ AC | Conversion |
+| Genset | Generator symbol with starter | Backup AC source |
+| ATS | Automatic transfer switch | Pick which AC source feeds the bus |
+| Distribution board | Bus + breakers | Customer feeders, branch protection |
+| PCC | Point of common coupling | Where the mini-grid meets the DisCo feeder (if interconnected) |
+| Earthing | Triangle with ground symbol | Reference + fault path |
+| Metering point | Meter block | Where revenue is measured |
+
+<Callout tone="info">
+A useful habit when reading any SLD: trace the path of a hypothetical fault from a customer
+feeder back to ground and ask "what device interrupts it first?" If you can't find one,
+that's the bug.
+</Callout>
+
+## Protection devices and what they're for
+
+- **MCB (miniature circuit breaker)** — overcurrent and short-circuit protection on AC branch circuits.
+- **RCD (residual current device)** — earth-leakage protection to prevent electrocution.
+- **DC fuse** — string-level protection against reverse current in the PV array.
+- **IMD (insulation-monitoring device)** — for isolated/IT systems, detects insulation faults before they become hazardous.
+- **SPD (surge protection device)** — clamps lightning and switching surges. Mandatory on DC and AC sides in Nigerian outdoor installations.
+
+<EvidenceQuote lessonId="lesson-4-02" source="Course doc §9 — Module 5 protection content">
+Required protection: RCDs, MCBs, fuses, IMDs, earthing. Module 5 covers complete protection planning;
+Module 4 ends with reading the SLD that already implements those choices.
+</EvidenceQuote>

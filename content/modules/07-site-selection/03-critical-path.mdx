@@ -1,0 +1,60 @@
+---
+id: lesson-7-03
+title: Building a critical-path schedule
+module: 07-site-selection
+difficulty: intermediate
+pacer_type: procedural
+nigerian_context: true
+learning_objective: Sequence a sample mini-grid project schedule, identify the critical path, and explain how slippage on a critical task delays commissioning.
+estimated_minutes: 25
+xp: 20
+prerequisites: [lesson-7-02]
+assessment_type: practice
+mastery_threshold: 80
+---
+
+## Why a Gantt is not a schedule
+
+A list of tasks with start and end dates is not a schedule until you've **linked dependencies**. A
+schedule answers: *"If this task slips by a week, what is the new commissioning date?"* A list
+of dates answers nothing.
+
+## A representative mini-grid schedule
+
+| # | Task | Typical duration | Depends on |
+|---|---|---|---|
+| 1 | Site survey & WTP study | 2–3 weeks | — |
+| 2 | Resource & shade assessment | 2 weeks | 1 |
+| 3 | Preliminary design + LCoE | 2 weeks | 2 |
+| 4 | Regulatory submission | 1 week (filing); **30 business days** clock | 3 |
+| 5 | DisCo notification (interconnected only) | **15 business days** silence clock | 3 |
+| 6 | Detailed design (COREN-signed) | 3 weeks | 3 |
+| 7 | Procurement (long-lead: batteries, inverters) | 8–14 weeks | 6 |
+| 8 | Civil works (control room, foundations, fencing) | 4 weeks | 6 |
+| 9 | Installation | 3 weeks | 7, 8 |
+| 10 | Commissioning (4-stage) | 1–2 weeks | 9 |
+| 11 | NEMSA inspection & energisation | 1 week | 10 |
+| 12 | Soft launch + handover | 2 weeks | 11 |
+
+The **critical path** is the longest dependency chain. Slippage on a critical-path task pushes
+commissioning by the same amount; slippage on a non-critical task can absorb into float.
+
+In this typical schedule, **procurement** is the long pole — battery and inverter lead times
+dominate. You can't shorten total project time by accelerating civils if procurement still
+takes 12 weeks.
+
+<Callout tone="warning">
+Two tasks have **regulatory clocks**, not work durations: NERC's 30-business-day target on
+applications and the DisCo's 15-business-day silence rule. Pad these — they are best-case.
+</Callout>
+
+<PracticeTask
+  lessonId="lesson-7-03"
+  href="/portfolio"
+  cta="Open your portfolio"
+  title="Sketch the schedule into your capstone"
+>
+You don't have a Gantt tool in MVP — but you do have a capstone tracker. Mark the **Project
+schedule** and **Risk register** sections as drafting once you've thought through which tasks
+are on your project's critical path and what could derail them.
+</PracticeTask>

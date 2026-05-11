@@ -1,0 +1,71 @@
+---
+id: lesson-6-02
+title: Tariffs, LCoE, and willingness to pay
+module: 06-regulation-finance
+difficulty: intermediate
+pacer_type: analogous
+nigerian_context: true
+learning_objective: Distinguish cost-reflective tariff from willingness-to-pay, and decide what to do when they disagree.
+estimated_minutes: 25
+xp: 20
+prerequisites: [lesson-6-01]
+assessment_type: quiz
+mastery_threshold: 80
+---
+
+## Two different numbers
+
+- **Cost-reflective tariff** = the per-kWh price that recovers CAPEX, OPEX, fuel, replacements, and a return, given the energy actually served. It is calculated.
+- **Willingness to pay (WTP)** = the per-kWh price customers actually accept and consistently pay. It is observed.
+
+When they're equal, the project is bankable on tariff revenue alone. When they're not — which is most of the time in early-stage rural Nigerian markets — the gap has to be closed somehow.
+
+| Cost-reflective ≈ WTP | Project survives on tariff alone |
+| Cost-reflective > WTP | Subsidy, grant, or DFI debt closes the gap |
+| WTP > Cost-reflective | Rare, but possible for high-productive-use clusters |
+
+## How LCoE feeds the tariff
+
+**LCoE (Levelised Cost of Electricity)** = NPC ÷ lifetime kWh served. It is a per-kWh number,
+discounted to today, that includes every cost the project incurs over its life.
+
+- LCoE is roughly the minimum sustainable tariff before profit and collection losses.
+- Adjust LCoE up for **collection efficiency** (e.g. ÷ 0.85 if you expect 85 % collection).
+- Adjust again for desired equity return.
+
+Two projects with identical kWh/year can have very different LCoEs because of CAPEX,
+fuel use, battery replacement intervals, and discount rate.
+
+<EvidenceQuote lessonId="lesson-6-02" source="Course doc §6 — Module 6 finance metrics">
+LCoE, NPC, IRR, NPV, payback, CAPEX, OPEX, DFI funding, DARES PBG/MST, cost-reflective tariff,
+willingness to pay. Module 6 ends with a simple LCoE model the learner must be able to build.
+</EvidenceQuote>
+
+## When WTP < cost-reflective: four real options
+
+1. **DARES PBG or MST grant.** Reduces effective CAPEX → lowers LCoE → tariff can be smaller.
+2. **Anchor customer**. A productive-use anchor pays a higher tariff that cross-subsidises domestic customers.
+3. **Tariff bands**. Different bands by customer class. Common, regulator-friendly.
+4. **Scale down**. If no subsidy is available and WTP genuinely won't move, the project may need to wait or shrink.
+
+<CritiquePrompt
+  lessonId="lesson-6-02"
+  question="A 250 kW site shows cost-reflective tariff of ₦220/kWh against community WTP of ₦150/kWh. Which approach would you defend first?"
+  options={[
+    {
+      label: "Apply for a DARES PBG grant",
+      tradeoff: "Closes the gap from the capital side; preserves a single-band tariff. But timing depends on grant cycles, and the grant must be modelled in the financial pack.",
+      betterFor: "Projects with a clean financial pack and time to wait for a grant window."
+    },
+    {
+      label: "Recruit a productive-use anchor (e.g. a rice mill)",
+      tradeoff: "Anchor pays a tariff closer to LCoE, raises blended revenue. Requires real demand evidence — letter of intent or existing diesel records — or the anchor never materialises.",
+      betterFor: "Sites with visible commercial activity and a credible anchor in negotiation."
+    },
+    {
+      label: "Shrink the system to the demand WTP can pay for",
+      tradeoff: "Removes the gap by removing scope. But productive-use anchors then disappear, the tariff stays high in absolute ₦/month for domestic customers anyway, and growth headroom is lost.",
+      betterFor: "Markets where neither grants nor anchors are realistic in the project window."
+    }
+  ]}
+/>

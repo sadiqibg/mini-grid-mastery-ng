@@ -1,0 +1,57 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Which of these is NOT one of the five mandatory BoQ categories?",
+    "options": [
+      "Generation",
+      "Storage",
+      "Marketing",
+      "Civil works and installation"
+    ],
+    "answerIndex": 2
+  },
+  {
+    "id": "q2",
+    "prompt": "A BoQ that lists only PV modules, batteries, and inverters is missing…",
+    "options": [
+      "Nothing — that is the complete list",
+      "Distribution, civil works, and general items",
+      "Only signage",
+      "Only the inverter"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q3",
+    "prompt": "Why include spares in the BoQ rather than buying them on-demand?",
+    "options": [
+      "Spares are cheaper in bulk",
+      "Without on-site spares, a single fault becomes weeks of downtime",
+      "NEMSA requires it",
+      "Spares earn carbon credits"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q4",
+    "prompt": "Surge protection devices in Nigerian outdoor installations are…",
+    "options": [
+      "Optional if budget is tight",
+      "Required, and cheap up-front, expensive to retrofit after damage",
+      "Replaced by RCDs",
+      "Only needed in the rainy season"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "q5",
+    "prompt": "As-built drawings belong in the BoQ because…",
+    "options": [
+      "They are billable to the customer",
+      "They are required for NEMSA inspection and future O&M",
+      "They count as a civil works item",
+      "They replace the SLD"
+    ],
+    "answerIndex": 1
+  }
+]

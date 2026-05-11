@@ -1,0 +1,34 @@
+{
+  "id": "hybrid-topology",
+  "title": "Hybrid Topology Trade-offs",
+  "prompt": "Map the trade-offs of choosing a hybrid topology and coupling architecture for a Nigerian mini-grid. There is no single correct map — your job is to surface the *tensions* between resource, demand, reliability, cost, and operability.",
+  "concept_pool": [
+    { "id": "topology", "label": "Topology choice" },
+    { "id": "dc_coupled", "label": "DC-coupled" },
+    { "id": "ac_coupled", "label": "AC-coupled" },
+    { "id": "solar_battery", "label": "Solar + battery" },
+    { "id": "solar_diesel", "label": "Solar + diesel" },
+    { "id": "solar_battery_diesel", "label": "Solar + battery + diesel" },
+    { "id": "load_profile", "label": "Load profile" },
+    { "id": "resource", "label": "Solar resource (PSH)" },
+    { "id": "fuel_price", "label": "Fuel price volatility" },
+    { "id": "retrofit", "label": "Retrofit / phased build" },
+    { "id": "lcoe", "label": "LCoE" },
+    { "id": "reliability", "label": "Reliability target" },
+    { "id": "om_complexity", "label": "O&M complexity" },
+    { "id": "capex", "label": "CAPEX" }
+  ],
+  "relatedness_hints": [
+    ["topology", "load_profile", "the right topology depends on this — figure out how"],
+    ["topology", "resource", "the right topology depends on this — figure out how"],
+    ["solar_diesel", "fuel_price", "one is sensitive to the other — name the direction"],
+    ["solar_battery_diesel", "reliability", "these are connected — you decide how"],
+    ["ac_coupled", "retrofit", "one favours the other — figure out which way"],
+    ["dc_coupled", "lcoe", "this can affect this — figure out the sign"],
+    ["om_complexity", "topology", "these are connected — you decide how"],
+    ["capex", "topology", "these are connected — you decide how"]
+  ],
+  "allow_custom_nodes": true,
+  "min_nodes_to_submit": 6,
+  "min_edges_to_submit": 5
+}

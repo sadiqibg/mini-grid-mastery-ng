@@ -1,0 +1,50 @@
+---
+id: lesson-4-01
+title: Topology vs coupling vs control
+module: 04-hybrid-topologies
+difficulty: intermediate
+pacer_type: conceptual
+nigerian_context: true
+learning_objective: Distinguish topology, coupling architecture, and control philosophy — three choices people routinely conflate.
+estimated_minutes: 20
+xp: 20
+prerequisites: [lesson-3-03]
+assessment_type: quiz
+mastery_threshold: 80
+---
+
+These three words name three independent decisions. Mixing them up causes BoQ errors and
+procurement mistakes.
+
+| Decision | What it answers | Example choices |
+|---|---|---|
+| **Topology** | Which generation, storage, and conversion blocks exist? | Solar-only · solar-battery · solar-diesel · solar-battery-diesel · solar-wind-battery · solar-hydro |
+| **Coupling architecture** | How those blocks join electrically | DC-coupled · AC-coupled · hybrid bus |
+| **Control philosophy** | How the system decides what runs when | PV-first · diesel-priority · cycle-charging · load-following |
+
+A solar-battery-diesel mini-grid (topology) can be DC-coupled (architecture) and run
+load-following (control) — or AC-coupled and cycle-charging. Different choices, same topology.
+
+## DC-coupled vs AC-coupled in one paragraph each
+
+**DC-coupled**: PV → MPPT → battery DC bus → inverter → AC distribution. One conversion path
+to the load. Efficient for off-grid because energy doesn't bounce in and out of inverters.
+Typical for systems up to a few hundred kW; large strings of MPPTs feed a common DC bus.
+
+**AC-coupled**: PV → string inverter → AC bus ← battery inverter ← battery. Two inverters,
+both seeing the AC bus. Better for retrofits onto existing diesel networks, easier to add or
+upgrade in phases, and the natural choice once you cross ~250 kW. Round-trip efficiency is
+slightly lower because PV → battery passes through two inverters.
+
+<Callout tone="info">
+There is no universally "better" coupling. The right answer comes from system size, retrofit
+context, expansion plans, and what local installers can actually maintain.
+</Callout>
+
+<NigerianExample>
+A 60 kW peri-urban market mini-grid replacing a diesel genset typically lands on AC-coupled —
+the genset stays on the AC bus during the transition, and the project can be commissioned in
+stages without dropping service.
+</NigerianExample>
+
+<ConceptMapPrompt mapId="hybrid-topology" lessonId="lesson-4-01" />
