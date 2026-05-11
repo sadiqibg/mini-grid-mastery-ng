@@ -26,6 +26,9 @@ import "@xyflow/react/dist/style.css";
 import { v4 as uuidv4 } from "uuid";
 import { useStore } from "@/lib/store";
 import type { ConceptMapAuthoring } from "@/lib/content";
+import EditableEdge from "./EditableEdge";
+
+const edgeTypes = { editable: EditableEdge };
 
 type FlowNode = Node<{ label: string; custom?: boolean }>;
 type FlowEdge = Edge<{ label: string }>;
@@ -43,7 +46,8 @@ function makeInitialLayout(map: ConceptMapAuthoring, restored?: { nodes: any[]; 
         id: `e-${e.from}-${e.to}-${uuidv4().slice(0, 6)}`,
         source: e.from,
         target: e.to,
-        label: e.label || "?",
+        type: "editable",
+        label: e.label || "",
         markerEnd: { type: MarkerType.ArrowClosed },
       })),
     };
@@ -68,10 +72,10 @@ function Editor({ map }: { map: ConceptMapAuthoring }) {
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
+    if (nodes.length === 0 && edges.length === 0) return; // skip empty-canvas auto-save
     const t = setTimeout(() => { void save(map.id, serialize(nodes, edges), false); }, 2000);
     return () => clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nodes, edges]);
+  }, [nodes, edges, save, map.id]);
 
   const onNodesChange = useCallback(
     (changes: NodeChange[]) => setGraph((g) => ({ ...g, nodes: applyNodeChanges(changes, g.nodes) as FlowNode[] })),
@@ -84,12 +88,26 @@ function Editor({ map }: { map: ConceptMapAuthoring }) {
 
   const onConnect = useCallback((conn: Connection) => {
     if (!conn.source || !conn.target || conn.source === conn.target) return;
-    const label = window.prompt('Name this relationship in your own words (e.g. "powers", "regulates", "depends on"):', "")?.trim();
-    if (!label) return;
     setGraph((g) => ({
       ...g,
-      edges: addEdge({ ...conn, label, markerEnd: { type: MarkerType.ArrowClosed } } as Edge, g.edges) as FlowEdge[],
+      edges: addEdge(
+        { ...conn, type: "editable", label: "", markerEnd: { type: MarkerType.ArrowClosed } } as Edge,
+        g.edges
+      ) as FlowEdge[],
     }));
+  }, []);
+
+  // EditableEdge dispatches a CustomEvent when a label is saved. Keep edge state in sync.
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const { id, label } = (e as CustomEvent<{ id: string; label: string }>).detail;
+      setGraph((g) => ({
+        ...g,
+        edges: g.edges.map((edge) => (edge.id === id ? { ...edge, label } : edge)),
+      }));
+    };
+    window.addEventListener("conceptmap:edgeLabel", handler);
+    return () => window.removeEventListener("conceptmap:edgeLabel", handler);
   }, []);
 
   const placedIds = useMemo(() => new Set(nodes.map((n) => n.id)), [nodes]);
@@ -153,6 +171,7 @@ function Editor({ map }: { map: ConceptMapAuthoring }) {
           <ReactFlow
             nodes={nodes}
             edges={edges}
+            edgeTypes={edgeTypes}
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
             onConnect={onConnect}

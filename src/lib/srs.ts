@@ -25,6 +25,9 @@ export function reviewCard(state: FlashcardState | undefined, grade: 0 | 1 | 2 |
   } else {
     if (intervalDays === 0) intervalDays = grade === 1 ? 1 : grade === 2 ? 2 : 4;
     else intervalDays = Math.round(intervalDays * (grade === 1 ? 1.2 : grade === 2 ? ease : ease * 1.3));
+    // Cap at 10 years — anything longer means the card has effectively been retired,
+    // and uncapped growth eventually overflows Date arithmetic in addDays().
+    if (intervalDays > 3650) intervalDays = 3650;
     ease = Math.min(2.8, ease + (grade === 3 ? 0.15 : grade === 2 ? 0 : -0.05));
   }
 

@@ -135,8 +135,16 @@ export default function LoadSurveyLab() {
 
       <section className="grid gap-4 sm:grid-cols-3">
         <Metric label="Daily energy" value={`${(result.dailyWh / 1000).toFixed(1)} kWh`} />
-        <Metric label="Coincident peak" value={`${(result.peakW / 1000).toFixed(2)} kW`} />
-        <Metric label="Hourly peak (profile)" value={`${(Math.max(...result.hourlyProfile) / 1000).toFixed(2)} kW`} />
+        <Metric
+          label="Coincident peak"
+          value={`${(result.peakW / 1000).toFixed(2)} kW`}
+          sub="Time-aware: peaks from different appliance classes only stack when they overlap."
+        />
+        <Metric
+          label="Hourly average peak"
+          value={`${(Math.max(0, ...result.hourlyProfile) / 1000).toFixed(2)} kW`}
+          sub="Average watts during the busiest hour."
+        />
       </section>
 
       <section className="card">
@@ -186,11 +194,12 @@ export default function LoadSurveyLab() {
   );
 }
 
-function Metric({ label, value }: { label: string; value: string }) {
+function Metric({ label, value, sub }: { label: string; value: string; sub?: string }) {
   return (
     <div className="card">
       <p className="text-xs uppercase text-ink-500">{label}</p>
       <p className="mt-1 text-2xl font-semibold">{value}</p>
+      {sub && <p className="mt-1 text-xs text-ink-500">{sub}</p>}
     </div>
   );
 }

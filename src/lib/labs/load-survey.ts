@@ -49,12 +49,17 @@ const HOURLY_PRESETS: Record<ApplianceClass, number[]> = {
 };
 
 export function computeLoadSurvey(rows: LoadRow[]): LoadSurveyResult {
-  const hourly = new Array(24).fill(0) as number[];
+  // hourlyEnergyWh[h] = Wh consumed in hour h ≈ average watts during hour h
+  const hourlyEnergyWh = new Array(24).fill(0) as number[];
+  // hourlyPeakW[h] = instantaneous coincident demand at hour h. Built by spreading each row's
+  // coincident peak (qty * power * coincidence) across the day using the preset shape — rows
+  // that don't run at hour h contribute nothing, so peaks from different appliance classes
+  // only stack when they actually overlap in time.
+  const hourlyPeakW = new Array(24).fill(0) as number[];
   const byClass: Record<string, { dailyWh: number; peakW: number }> = {};
   const warnings: string[] = [];
 
   let dailyWh = 0;
-  let peakW = 0;
 
   for (const r of rows) {
     if (r.quantity <= 0 || r.powerW <= 0 || r.hoursPerDay < 0) continue;
@@ -62,17 +67,28 @@ export function computeLoadSurvey(rows: LoadRow[]): LoadSurveyResult {
     const rowPeakW = r.quantity * r.powerW * r.coincidenceFactor;
 
     dailyWh += rowDailyWh;
-    peakW += rowPeakW;
+
+    const rawPreset = HOURLY_PRESETS[r.applianceClass] ?? HOURLY_PRESETS.other;
+    // Normalise presets to sum to 1.0 so the hourly energy distribution preserves daily total
+    // regardless of authoring rounding. presetMax (max of normalised) drives the peak shape.
+    const presetSum = rawPreset.reduce((a, b) => a + b, 0) || 1;
+    const preset = rawPreset.map((v) => v / presetSum);
+    const presetMax = Math.max(...preset, 1e-9);
+
+    let rowPeakAtAnyHour = 0;
+    for (let h = 0; h < 24; h++) {
+      hourlyEnergyWh[h] += rowDailyWh * preset[h];
+      // Normalise preset so the row is at full coincident peak during its busiest hour
+      // and proportionally less in surrounding hours. Honest way to combine intra-class
+      // coincidence with inter-class time-of-day diversity.
+      const rowPeakAtH = rowPeakW * (preset[h] / presetMax);
+      hourlyPeakW[h] += rowPeakAtH;
+      if (rowPeakAtH > rowPeakAtAnyHour) rowPeakAtAnyHour = rowPeakAtH;
+    }
 
     if (!byClass[r.customerClass]) byClass[r.customerClass] = { dailyWh: 0, peakW: 0 };
     byClass[r.customerClass].dailyWh += rowDailyWh;
-    byClass[r.customerClass].peakW += rowPeakW;
-
-    // Distribute the day's energy across 24 hours, then convert Wh-per-hour back to average watts in that hour.
-    const preset = HOURLY_PRESETS[r.applianceClass] ?? HOURLY_PRESETS.other;
-    for (let h = 0; h < 24; h++) {
-      hourly[h] += rowDailyWh * preset[h]; // Wh in hour h ≈ average W during that hour
-    }
+    byClass[r.customerClass].peakW += rowPeakAtAnyHour;
 
     // Per-row warnings.
     if (r.applianceClass === "welder" && r.coincidenceFactor > 0.5) {
@@ -90,16 +106,13 @@ export function computeLoadSurvey(rows: LoadRow[]): LoadSurveyResult {
     warnings.push("No productive-use rows in the survey — domestic-only profiles rarely make the unit economics work. Add at least one productive customer if you can.");
   }
 
-  const peakHourW = Math.max(...hourly);
-  if (peakHourW > peakW * 1.5 && peakHourW > 0) {
-    warnings.push("Hourly profile peak is much higher than coincident peak. Check coincidence factors — they may be too low.");
-  }
+  const peakW = Math.max(0, ...hourlyPeakW);
 
   return {
     dailyWh,
     peakW,
     byClass: byClass as LoadSurveyResult["byClass"],
-    hourlyProfile: hourly,
+    hourlyProfile: hourlyEnergyWh,
     warnings,
   };
 }
